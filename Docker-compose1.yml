@@ -1,0 +1,31 @@
+services:
+  investment-dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile1
+    image: investment-recommendation-system:phase5
+    container_name: investment-recommendation-system
+    restart: unless-stopped
+    init: true
+    ports:
+      # Bind only to loopback. Put an authenticated HTTPS proxy/tunnel in front
+      # for remote access; never publish port 8501 directly to the internet.
+      - "127.0.0.1:8501:8501"
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=64m
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    pids_limit: 128
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8501/_stcore/health', timeout=3)"
+      interval: 30s
+      timeout: 5s
+      start_period: 25s
+      retries: 3

@@ -1,0 +1,23 @@
+[browser]
+gatherUsageStats = false
+
+[client]
+showErrorDetails = "none"
+toolbarMode = "minimal"
+
+[logger]
+level = "info"
+
+[server]
+address = "127.0.0.1"
+enableCORS = true
+enableXsrfProtection = true
+
+[theme]
+base = "light"
+primaryColor = "#176B75"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F2F4F5"
+textColor = "#24313A"
+font = "sans serif"
+baseFontSize = 16
