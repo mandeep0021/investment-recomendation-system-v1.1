@@ -16,8 +16,8 @@ enableXsrfProtection = true
 [theme]
 base = "light"
 primaryColor = "#176B75"
-backgroundColor = "#FFFFFF"
-secondaryBackgroundColor = "#F2F4F5"
-textColor = "#24313A"
+backgroundColor = "#F8FAFC"
+secondaryBackgroundColor = "#F1F5F9"
+textColor = "#1E293B"
 font = "sans serif"
 baseFontSize = 16

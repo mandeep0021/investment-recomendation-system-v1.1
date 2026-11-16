@@ -32,7 +32,7 @@ On Windows, double-click [`Run_dashboard1.bat`](Run_dashboard1.bat). Keep its co
 
 Successful requests are cached in memory for 15 minutes. A failed symbol is reported; synthetic data is not substituted. The provider is unofficial and may delay, change, rate-limit, or block requests.
 
-The interface uses a responsive layout, a market snapshot, compact asset deep-dive metrics, and a portfolio allocation chart. Tabs and input columns adapt for narrow screens. The sidebar starts collapsed; use its menu button to open research settings and the risk-free-rate assumption. The hero banner and primary action use restrained motion, and metric/chart reveals respect reduced-motion preferences. The app has a browser title, description, custom favicon, clickable brand header, and dynamically dated footer. Streamlit usage statistics are disabled in the local project configuration.
+The interface uses a cool-neutral design system with an off-white canvas, white elevated cards, slate typography, and a teal accent. Responsive spacing, clear metric and chart surfaces, visible focus states, and subtle transitions keep the dashboard readable across screen sizes. The sidebar starts collapsed; use its menu button to open research settings and the risk-free-rate assumption. The app has a browser title, description, custom favicon, clickable brand header, and dynamically dated footer. Streamlit usage statistics are disabled in the local project configuration.
 
 ## Privacy and terms
 
@@ -62,7 +62,7 @@ python Generate_deliverables1.py
 
 - `App1.py` - Streamlit application
 - `Analysis1.py` - market data client, validation, analytics, and backtest
-- `.streamlit/Config1.toml` - local theme and telemetry settings
+- `.streamlit/config.toml` - active Streamlit theme, telemetry, and local server settings
 - `assets/Favicon1.svg` and `assets/Favicon1.png` - custom browser icon
 - `Privacy_policy1.md` and `Terms_and_conditions1.md` - policy pages displayed in the app
 - `tests/Test_analysis1.py` - offline tests; no network calls required

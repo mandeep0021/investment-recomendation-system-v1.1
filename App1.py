@@ -171,73 +171,181 @@ st.markdown(
     """
     <style>
       :root {
-        --irs-ink: #172B36;
-        --irs-muted: #60727D;
+        --irs-bg: #F8FAFC;
+        --irs-panel: #F1F5F9;
+        --irs-surface: #FFFFFF;
+        --irs-ink: #1E293B;
+        --irs-muted: #64748B;
         --irs-teal: #176B75;
-        --irs-line: rgba(34, 55, 66, .12);
-        --irs-panel: #F5F8F9;
+        --irs-border: #E2E8F0;
+        --irs-focus: rgba(23, 107, 117, .2);
+        --irs-shadow: 0 4px 6px -1px rgba(15, 23, 42, .05), 0 2px 4px -2px rgba(15, 23, 42, .04);
       }
-      .block-container { max-width: 1440px; padding-top: 1.6rem; padding-bottom: 3rem; }
-      .hero-banner {
-        margin: 0 0 1.35rem;
-        padding: 1.65rem 1.8rem;
-        background: linear-gradient(115deg, #F1F7F7 0%, #F7F8FA 58%, #EDF3F5 100%);
-        border: 1px solid var(--irs-line);
-        border-radius: 18px;
-        box-shadow: 0 8px 26px rgba(28, 54, 65, .045);
+      html, body, [data-testid="stAppViewContainer"] { background: var(--irs-bg); }
+      [data-testid="stHeader"] { background: rgba(248, 250, 252, .94); }
+      [data-testid="stSidebar"] {
+        background: var(--irs-panel);
+        border-right: 1px solid var(--irs-border);
+      }
+      [data-testid="stAppViewContainer"] .block-container {
+        max-width: 1440px;
+        padding: 2rem 2rem 4rem;
+      }
+      .stApp {
+        color: var(--irs-ink);
+        font-family: Inter, "Segoe UI Variable", "Segoe UI", sans-serif;
+      }
+      .stApp h1, .stApp h2, .stApp h3, .stApp h4 {
+        color: var(--irs-ink);
+        font-weight: 650;
+        letter-spacing: -.025em;
+        line-height: 1.25;
+      }
+      .stApp p, .stApp li, .stApp label, .stApp [data-testid="stCaptionContainer"] {
+        line-height: 1.55;
+      }
+      .stApp a:not(.brand-link) { color: var(--irs-teal); }
+      .stApp .hero-banner {
+        margin: 0 0 1.5rem;
+        padding: 1.75rem 2rem;
+        background: linear-gradient(120deg, #FFFFFF 0%, #F1F5F9 100%);
+        border: 1px solid var(--irs-border);
+        border-radius: 20px;
+        box-shadow: var(--irs-shadow);
         animation: hero-enter 300ms ease-out both;
       }
-      .brand-heading { margin: 0; color: var(--irs-ink); font-size: clamp(1.65rem, 3.1vw, 2.45rem); line-height: 1.16; letter-spacing: -.035em; }
-      .brand-link { display: inline-flex; align-items: center; gap: .8rem; color: inherit; text-decoration: none; }
-      .brand-link:hover { color: inherit; text-decoration: none; }
-      .hero-description { margin: .65rem 0 0 3.5rem; color: #526771; font-size: 1rem; }
-      .app-footer { margin-top: 2.5rem; padding: 1.2rem 0 .5rem; border-top: 1px solid var(--irs-line); color: var(--irs-muted); font-size: .84rem; }
+      .stApp .hero-banner h1.brand-heading {
+        margin: 0;
+        color: var(--irs-ink) !important;
+        font-size: clamp(1.8rem, 3vw, 2.45rem) !important;
+        font-weight: 700;
+        line-height: 1.2;
+        letter-spacing: -.035em;
+      }
+      .stApp .hero-banner h1.brand-heading a.brand-link,
+      .stApp .hero-banner h1.brand-heading a.brand-link:hover {
+        display: inline-flex;
+        align-items: center;
+        gap: .8rem;
+        color: var(--irs-ink) !important;
+        text-decoration: none !important;
+      }
+      .hero-description {
+        margin: .65rem 0 0 3.5rem;
+        color: var(--irs-muted);
+        font-size: 1rem;
+      }
+      .app-footer {
+        margin-top: 2.5rem;
+        padding: 1.5rem 0 .5rem;
+        border-top: 1px solid var(--irs-border);
+        color: var(--irs-muted);
+        font-size: .875rem;
+      }
       [data-testid="stMetric"] {
-        background: #FFFFFF;
-        border: 1px solid var(--irs-line);
-        border-radius: 13px;
-        padding: .9rem 1rem;
-        box-shadow: 0 3px 12px rgba(28, 54, 65, .035);
+        background: var(--irs-surface);
+        border: 1px solid var(--irs-border);
+        border-radius: 16px;
+        padding: 1.2rem 1.25rem;
+        box-shadow: var(--irs-shadow);
+        transition: border-color 150ms ease-in-out, box-shadow 150ms ease-in-out, transform 150ms ease-in-out;
       }
       [data-testid="stMetricLabel"] { color: var(--irs-muted); font-weight: 600; }
-      [data-testid="stMetricValue"] { color: var(--irs-ink); letter-spacing: -.025em; }
+      [data-testid="stMetricValue"] { color: var(--irs-ink); font-weight: 650; letter-spacing: -.025em; }
+      @media (hover: hover) {
+        [data-testid="stMetric"]:hover {
+          border-color: #CBD5E1;
+          box-shadow: 0 8px 16px -6px rgba(15, 23, 42, .12);
+          transform: translateY(-1px);
+        }
+      }
       [data-testid="stTabs"] [role="tablist"] {
-        gap: .35rem;
-        border-bottom: 1px solid var(--irs-line);
+        gap: .5rem;
+        border-bottom: 1px solid var(--irs-border);
       }
       [data-testid="stTabs"] button[role="tab"] {
+        min-height: 2.75rem;
+        padding: .75rem 1rem;
         border-radius: 10px 10px 0 0;
-        padding: .7rem 1rem;
+        color: var(--irs-muted);
         font-weight: 600;
+        transition: color 150ms ease-in-out, background-color 150ms ease-in-out;
       }
-      [data-testid="stPlotlyChart"], [data-testid="stDataFrame"] {
-        border: 1px solid var(--irs-line);
-        border-radius: 13px;
+      [data-testid="stTabs"] button[role="tab"][aria-selected="true"] {
+        color: var(--irs-teal);
+      }
+      [data-testid="stPlotlyChart"], [data-testid="stDataFrame"], [data-testid="stTable"] {
+        border: 1px solid var(--irs-border);
+        border-radius: 16px;
         overflow: hidden;
-        background: #FFFFFF;
+        background: var(--irs-surface);
+        box-shadow: var(--irs-shadow);
       }
-      button[data-testid^="stBaseButton"] { border-radius: 10px !important; font-weight: 600; }
-      input, [data-baseweb="select"] > div { border-radius: 9px !important; }
       div[data-testid="stForm"] {
-        border: 1px solid var(--irs-line);
-        border-radius: 15px;
-        padding: 1.1rem 1.25rem 1.25rem;
-        background: #FFFFFF;
+        padding: 1.5rem;
+        border: 1px solid var(--irs-border);
+        border-radius: 18px;
+        background: var(--irs-surface);
+        box-shadow: var(--irs-shadow);
+      }
+      div[data-baseweb="input"] > div,
+      div[data-baseweb="select"] > div,
+      div[data-baseweb="textarea"] > div {
+        border-color: #CBD5E1;
+        border-radius: 10px;
+        background: var(--irs-surface);
+        transition: border-color 150ms ease-in-out, box-shadow 150ms ease-in-out;
+      }
+      div[data-baseweb="input"]:focus-within > div,
+      div[data-baseweb="select"]:focus-within > div,
+      div[data-baseweb="textarea"]:focus-within > div {
+        border-color: var(--irs-teal);
+        box-shadow: 0 0 0 3px var(--irs-focus);
+      }
+      .stApp button[data-testid^="stBaseButton"] {
+        min-height: 2.75rem;
+        padding: .6rem 1rem;
+        border-radius: 10px;
+        font-weight: 600;
+        transition: background-color 150ms ease-in-out, border-color 150ms ease-in-out, box-shadow 150ms ease-in-out, transform 150ms ease-in-out;
+      }
+      .stApp button[data-testid^="stBaseButton-primary"] {
+        border-color: var(--irs-teal);
+        background: var(--irs-teal);
+        color: #FFFFFF;
+      }
+      .stApp button[data-testid^="stBaseButton-primary"]:hover {
+        border-color: #12565F;
+        background: #12565F;
+        box-shadow: 0 4px 10px rgba(23, 107, 117, .2);
+        transform: translateY(-1px);
+      }
+      .stApp button:focus-visible, .stApp a:focus-visible {
+        outline: 3px solid var(--irs-focus);
+        outline-offset: 2px;
+      }
+      [data-testid="stProgress"] > div > div {
+        background: var(--irs-teal);
       }
       @keyframes hero-enter {
         from { opacity: 0; transform: translateY(6px); }
         to { opacity: 1; transform: translateY(0); }
       }
       @media (prefers-reduced-motion: reduce) {
-        .hero-banner { animation: none; }
+        *, *::before, *::after {
+          scroll-behavior: auto !important;
+          animation-duration: .01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: .01ms !important;
+        }
       }
       @media (max-width: 900px) {
         div[role="tablist"] { flex-wrap: wrap !important; overflow: visible !important; white-space: normal !important; gap: .2rem; }
         button[role="tab"] { flex: 1 1 30% !important; width: auto !important; min-width: 0 !important; white-space: normal !important; min-height: 2.7rem; }
       }
       @media (max-width: 760px) {
-        .block-container { padding: 1rem .85rem 2rem; }
-        .hero-banner { padding: 1.05rem 1rem; border-radius: 14px; }
+        [data-testid="stAppViewContainer"] .block-container { padding: 1rem .85rem 2rem; }
+        .stApp .hero-banner { padding: 1.2rem 1rem; border-radius: 16px; }
         .brand-link { gap: .55rem; }
         .brand-link img { width: 34px; height: 34px; }
         .hero-description { margin-left: 2.6rem; font-size: .9rem; }
