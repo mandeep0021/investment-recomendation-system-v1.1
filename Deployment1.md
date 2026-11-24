@@ -2,7 +2,9 @@
 
 ## Deployment status
 
-This phase prepares a reproducible container package and a safer private-access layout. It does **not** publish the dashboard or create a public website. No owner-controlled domain, hosting account, identity provider, or legal approval was supplied, so a public deployment would be premature.
+The educational demo is publicly deployed on Streamlit Community Cloud at [investment-recomendation-system-v11.streamlit.app](https://investment-recomendation-system-v11.streamlit.app/). The demo is public and unauthenticated; it is read-only and does not accept or store user accounts or portfolios. Do not enter personal or confidential information. This demo is not a production financial service.
+
+This phase also prepares a reproducible container package and a safer private-access layout for deployments that need authentication.
 
 The application remains a read-only historical research dashboard. It has no user accounts, role separation, trading capability, or persistent user portfolio database. Anyone admitted by the outer access layer sees the same application.
 

@@ -2,6 +2,8 @@
 
 A local research dashboard for analyzing historical market data retrieved from Yahoo Finance. It compares tickers, calculates historical risk and return measures, applies a transparent screen, and simulates same-currency portfolios. No synthetic price history or pre-filled market metrics are included.
 
+**Public demo:** [Open the dashboard](https://investment-recomendation-system-v11.streamlit.app/). It is a read-only educational demo and does not execute trades.
+
 > Historical performance is not a forecast or personalized investment advice. The app does not execute trades.
 
 ## Run locally
@@ -73,7 +75,7 @@ python Generate_deliverables1.py
 - `Dockerfile1`, `Docker-compose1.yml`, `.Dockerignore1` - hardened container package
 - `Run_dashboard1.bat` - Windows launcher
 
-The app is intended for local or authenticated private use. Phase 5 adds a hardened Docker/Compose package; it does not publish a website. No domain, hosting account, or identity provider has been provided or connected. Review `Deployment1.md` before enabling remote access.
+The public demo is hosted on Streamlit Community Cloud and has no authentication; do not enter personal or confidential information. It is for educational demonstration only, not a production financial service. Phase 5 also includes a hardened Docker/Compose package for local or authenticated private use. Review `Deployment1.md` before changing the access model.
 
 ## Phase 4 security and quality checks
 
@@ -81,4 +83,4 @@ Phase 4 adds stricter validation for ticker input, network retry settings, portf
 
 ## Phase 5 deployment package
 
-Phase 5 adds a non-root Docker image, a loopback-only Docker Compose service, container health checks, a reduced-privilege/read-only runtime, deployment guidance for private authenticated access, and deployment-configuration regression tests. Build locally with `docker compose up --build -d`; see `Deployment1.md`. The project has not been publicly deployed.
+Phase 5 adds a non-root Docker image, a loopback-only Docker Compose service, container health checks, a reduced-privilege/read-only runtime, deployment guidance for private authenticated access, and deployment-configuration regression tests. The educational demo is publicly available at [investment-recomendation-system-v11.streamlit.app](https://investment-recomendation-system-v11.streamlit.app/). Build the local Docker package with `docker compose up --build -d`; see `Deployment1.md`.
