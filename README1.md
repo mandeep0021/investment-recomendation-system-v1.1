@@ -9,7 +9,7 @@ A local research dashboard for analyzing historical market data retrieved from Y
 Use Python 3.10 or later. Open a terminal in this folder:
 
 ```powershell
-python -m pip install -r Requirements1.txt
+python -m pip install -r requirements.txt
 python -m streamlit run App1.py
 ```
 

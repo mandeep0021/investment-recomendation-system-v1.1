@@ -21,7 +21,7 @@
 ## Run checks locally
 
 ```bash
-python -m pip install -r Requirements1.txt
+python -m pip install -r requirements.txt
 python -m pip install -r Requirements-dev1.txt
 python -m compileall -q .
 python -m unittest discover -s tests -v

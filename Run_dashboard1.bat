@@ -5,7 +5,7 @@ cd /d "%~dp0"
 py -3 -c "import streamlit, pandas, numpy, plotly, requests" >nul 2>nul
 if errorlevel 1 (
     echo Installing project dependencies...
-    py -3 -m pip install -r Requirements1.txt
+    py -3 -m pip install -r requirements.txt
     if errorlevel 1 (
         echo Dependency installation failed. Review the error above.
         pause

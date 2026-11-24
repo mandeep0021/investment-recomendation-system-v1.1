@@ -11,9 +11,9 @@ WORKDIR /app
 RUN groupadd --system --gid 10001 app && \
     useradd --system --uid 10001 --gid app --home-dir /tmp --shell /usr/sbin/nologin app
 
-COPY Requirements1.txt ./Requirements1.txt
+COPY requirements.txt ./requirements.txt
 RUN python -m pip install --no-cache-dir --upgrade pip && \
-    python -m pip install --no-cache-dir -r Requirements1.txt
+    python -m pip install --no-cache-dir -r requirements.txt
 
 COPY --chown=app:app . .
 USER app
